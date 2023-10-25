@@ -877,33 +877,32 @@ body:not(.lcars) .filter_types [class*="icheck-"] > input:first-child:checked + 
   }
 }
 
-/* Page title container (flex) */
-.flex-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap-reverse;
-}
-
-.flex-header h1 {
-  margin: 10px 30px 10px 0;
-  flex: 1 0 auto;
-}
-
 /* Global settings level selector container */
 .settings-selector {
-  padding: 14px 0 0;
-  order: 2;
-  font-size: 18px;
+  padding: 0 0 8px;
+  text-align: right;
 }
 
-/* Global settings level selector */
+/* Global settings level select element */
 #settings-level {
   display: inline-block;
   width: auto;
   min-width: 90px;
 }
 
+/* Settings tabs */
+.nav-tabs-custom > .nav-tabs {
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+.nav-tabs-custom > .nav-tabs > li {
+  font-size: small;
+}
+.settings-tabs > .nav-tabs > li > a {
+  padding: 10px 0.85em;
+}
+
+/* Top nav bar */
 .navbar-nav {
   height: 50px;
 }

@@ -125,55 +125,10 @@
                 </li>
                 <li class="header text-uppercase">System</li>
                 <!-- Settings -->
-                <li class="menu-system treeview <? if startsWith(scriptname, 'settings/') then ?> active<? end ?>">
-                    <a href="<?=webhome?>#">
+                <li class="menu-system treeview <? if startsWith(scriptname, 'settings') then ?> active<? end ?>">
+                    <a href="<?=webhome?>settings">
                         <i class="fa fa-fw menu-icon fa-cogs"></i> <span>Settings</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
                     </a>
-                    <ul class="treeview-menu">
-                        <li class="<? if scriptname == 'settings/system' then ?> active<? end ?>">
-                            <a href="<?=webhome?>settings/system">
-                                <i class="fa-fw menu-icon fa-solid fa-circle-info"></i> <span>System</span>
-                            </a>
-                        </li>
-                        <li class="<? if scriptname == 'settings/dns' then ?> active<? end ?>">
-                            <a href="<?=webhome?>settings/dns">
-                                <i class="fa-fw menu-icon fa-solid fa-book-atlas"></i> <span>DNS</span>
-                            </a>
-                        </li>
-                        <li class="<? if scriptname == 'settings/dhcp' then ?> active<? end ?>">
-                            <a href="<?=webhome?>settings/dhcp">
-                                <i class="fa-fw menu-icon fa-solid fa-sitemap"></i> <span>DHCP</span>
-                            </a>
-                        </li>
-                        <li class="<? if scriptname == 'settings/api' then ?> active<? end ?>">
-                            <a href="<?=webhome?>settings/api">
-                                <i class="fa-fw menu-icon fa-solid fa-window-restore"></i> <span>Web interface / API</span>
-                            </a>
-                        </li>
-                        <li class="<? if scriptname == 'settings/privacy' then ?> active<? end ?>">
-                            <a href="<?=webhome?>settings/privacy">
-                                <i class="fa-fw menu-icon fa-solid fa-binoculars"></i> <span>Privacy</span>
-                            </a>
-                        </li>
-                        <li class="<? if scriptname == 'settings/teleporter' then ?> active<? end ?>">
-                            <a href="<?=webhome?>settings/teleporter">
-                                <i class="fa-fw menu-icon fa-solid fa-file-export"></i> <span>Teleporter</span>
-                            </a>
-                        </li>
-                        <li class="<? if scriptname == 'settings/dnsrecords' then ?> active<? end ?> settings-level-1">
-                            <a href="<?=webhome?>settings/dnsrecords">
-                                <i class="fa-fw menu-icon fa-solid fa-address-book"></i> <span>Local DNS Records</span>
-                            </a>
-                        </li>
-                        <li class="<? if scriptname == 'settings/advanced' then ?> active<? end ?> settings-level-2">
-                            <a href="<?=webhome?>settings/advanced">
-                                <i class="fa-fw menu-icon fa-solid fa-pen-to-square"></i> <span>All settings</span>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 <!-- Tools -->
                 <li class="menu-system treeview<? if in_array(scriptname, {'messages', 'gravity', 'search', 'taillog', 'network'}) then ?> active<? end ?>">

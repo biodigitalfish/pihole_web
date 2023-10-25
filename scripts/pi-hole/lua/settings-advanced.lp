@@ -6,12 +6,6 @@
 *  This file is copyright under the latest version of the EUPL.
 *  Please see LICENSE file for your rights under this license.
 --]]
-
-mg.include('scripts/pi-hole/lua/header_authenticated.lp','r')
-
--- Page title and level selector
-PageTitle = "Advanced Settings"
-mg.include('scripts/pi-hole/lua/settings_header.lp','r')
 ?>
 <div class="row settings-level-2" id="advanced-content">
     <!-- dynamically filled with content -->
@@ -23,6 +17,3 @@ mg.include('scripts/pi-hole/lua/settings_header.lp','r')
     </div>
 </div>
 <script src="<?=pihole.fileversion('scripts/pi-hole/js/settings-advanced.js')?>"></script>
-<script src="<?=pihole.fileversion('scripts/pi-hole/js/settings.js')?>"></script>
-
-<? mg.include('scripts/pi-hole/lua/footer.lp','r')?>

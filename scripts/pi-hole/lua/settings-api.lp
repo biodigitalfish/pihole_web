@@ -1,4 +1,5 @@
-<? --[[
+<?
+--[[
 *  Pi-hole: A black hole for Internet advertisements
 *  (c) 2023 Pi-hole, LLC (https://pi-hole.net)
 *  Network-wide ad blocking via your own hardware.
@@ -6,12 +7,6 @@
 *  This file is copyright under the latest version of the EUPL.
 *  Please see LICENSE file for your rights under this license.
 --]]
-
-mg.include('scripts/pi-hole/lua/header_authenticated.lp','r')
-
--- Page title and level selector
-PageTitle = "Web Interface - API Settings"
-mg.include('scripts/pi-hole/lua/settings_header.lp','r')
 ?>
 <div class="row">
     <div class="col-md-6 settings-level-0">
@@ -220,6 +215,3 @@ mg.include('scripts/pi-hole/lua/settings_header.lp','r')
 <script src="<?=pihole.fileversion('scripts/vendor/jquery.confirm.min.js')?>"></script>
 <script src="<?=pihole.fileversion('scripts/vendor/qrious.min.js')?>"></script>
 <script src="<?=pihole.fileversion('scripts/pi-hole/js/settings-api.js')?>"></script>
-<script src="<?=pihole.fileversion('scripts/pi-hole/js/settings.js')?>"></script>
-
-<? mg.include('scripts/pi-hole/lua/footer.lp','r')?>

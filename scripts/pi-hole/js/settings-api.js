@@ -72,6 +72,14 @@ $(function () {
     },
     rowCallback: function (row, data) {
       $(row).attr("data-id", data.id);
+
+      // Higlight the current session row (ownSessionID)
+      if (data.current_session) {
+        ownSessionID = data.id;
+        $(row).attr("title", "This is the session you are currently using for the web interface");
+        $(row).attr("class", "allowed-row");
+      }
+
       var button =
         '<button type="button" class="btn btn-danger btn-xs" id="deleteSession_' +
         data.id +
@@ -85,14 +93,6 @@ $(function () {
         '<span class="far fa-trash-alt"></span>' +
         "</button>";
       $("td:eq(8)", row).html(button);
-      if (data.current_session) {
-        ownSessionID = data.id;
-        $("td:eq(6)", row).html(
-          '<strong title="This is the session you are currently using for the web interface">' +
-            data.remote_addr +
-            "</strong>"
-        );
-      }
 
       let icon = "";
       let title = "";
@@ -107,7 +107,9 @@ $(function () {
         icon = "fa-xmark";
       }
 
-      $("td:eq(3)", row).html('<i class="fa-solid ' + icon + '" title="' + title + '"></i>');
+      // Add the title on the table cell and add the icon inside it
+      $("td:eq(3)", row).attr("title", title);
+      $("td:eq(3)", row).html('<i class="fa-solid ' + icon + '"></i>');
     },
     select: {
       style: "multi",

@@ -207,49 +207,36 @@ function delSessions(ids) {
     return parseInt(value, 10);
   });
 
-  // Check if own session is selected and remove it when deleting multiple
-  // We need this only when multiple sessions are removed to ensure we do not
-  // accidentally remove our own session and thus log us out *before* we can
-  // remove the other sessions
-  let ownSessionDelete = false;
-  if (ids.includes(ownSessionID) && ids.length > 1) {
-    ownSessionDelete = true;
-    // Strip own session ID from array
-    ids = ids.filter(function (value) {
-      return value !== ownSessionID;
-    });
-  }
+  // When deleting multiple sessions we need to ensure we do not accidentally
+  // remove the current session (and thus log us out) before we can remove
+  // the other sessions.
+  // Move the current session to the last position:
+  ids.push(ids.splice(ids.indexOf(ownSessionID), 1)[0]);
 
   // Loop through IDs and delete them
   deleted = 0;
   for (const id of ids) {
-    delSession(id, ids.length, ownSessionDelete);
-  }
-}
-
-function delSession(id, len, ownSessionDelete) {
-  $.ajax({
-    url: "/api/auth/session/" + id,
-    method: "DELETE",
-  })
-    .done(function () {
-      // Do not reload page when deleting multiple sessions
-      if (++deleted < len) return;
-
-      // All other sessions have been deleted, now delete own session
-      if (ownSessionDelete) delSession(ownSessionID, 1, false);
-
-      if (id !== ownSessionID) {
-        // Reload table to remove session
-        apiSessionsTable.ajax.reload();
-      } else {
-        // Reload page to clear session
-        location.reload();
-      }
+    $.ajax({
+      url: "/api/auth/session/" + id,
+      method: "DELETE",
     })
-    .fail(function (data) {
-      apiFailure(data);
-    });
+      .done(function () {
+        // Do not reload page when deleting multiple sessions
+        if (++deleted < ids.length) return;
+
+        if (id !== ownSessionID) {
+          // Reload table to remove session
+          apiSessionsTable.ajax.reload();
+        } else {
+          // Reload page to clear session
+          location.reload();
+        }
+      })
+      .fail(function (data) {
+        apiFailure(data);
+      });
+
+  }
 }
 
 function processWebServerConfig() {

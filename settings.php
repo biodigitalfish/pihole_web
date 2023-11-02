@@ -411,6 +411,11 @@ if ($FTLpid !== 0) {
                             $DHCPend = $setupVars['DHCP_END'];
                         } else {
                             $DHCPend = '';
+                        }                        
+                        if (isset($setupVars['DHCP_SUBNET_MASK'])) {
+                            $DHCPSubnetMask = $setupVars['DHCP_SUBNET_MASK'];
+                        } else {
+                            $DHCPSubnetMask = '';
                         }
                         if (isset($setupVars['DHCP_ROUTER'])) {
                             $DHCProuter = $setupVars['DHCP_ROUTER'];
@@ -442,7 +447,8 @@ if ($FTLpid !== 0) {
                         $DHCP = false;
                         $DHCPstart = '';
                         $DHCPend = '';
-                        $DHCProuter = '';
+                        $DHCPsubnetMask = '255.255.255.0'; // set default to /24 subnet.
+                        $DHCProuter = '';                        
 
                         // Try to guess initial settings
                         if ($IPv4GW !== 'unknown') {
@@ -506,7 +512,19 @@ if ($FTLpid !== 0) {
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-12">
+                                            <div class="col-xs-12 col-sm-6 col-md-12 col-lg-6">
+                                                <label>Subnet Mask</label>
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">Subnet</div>
+                                                        <input type="text" class="form-control DHCPgroup" name="subnetMask" id="subnetMask"
+                                                            autocomplete="off" spellcheck="false" autocapitalize="none"
+                                                            autocorrect="off" value="<?php echo $DHCPSubnetMask; ?>"
+                                                            <?php if (!$DHCP) echo 'disabled'; ?>>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 col-md-12 col-lg-6">
                                                 <label>Router (gateway) IP address</label>
                                                 <div class="form-group">
                                                     <div class="input-group">

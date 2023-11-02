@@ -496,6 +496,12 @@ if (isset($_POST['field'])) {
                     $error .= 'To IP ('.htmlspecialchars($to).') is invalid!<br>';
                 }
 
+                // Validate to Subnet Mask
+                $subnetMask = $_POST['subnetMask'];
+                if (!validSubnetMask($subnetMask)) {
+                    $error .= 'Subnet Mask (' . htmlspecialchars($subnetMask) . ') is invalid!<br>';
+                }
+
                 // Validate router IP
                 $router = $_POST['router'];
                 if (!validIP($router)) {
